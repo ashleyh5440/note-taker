@@ -28,14 +28,19 @@
 
 
 const express = require('express');
-const htmlRoutes = require('./routes/html-routes')
-const apiRoutes = require('./routes/api-routes')
-const path = require('path');
-const PORT = 3001
-
+const htmlRoutes = require('./routes/html-routes');
+const apiRoutes = require('./routes/api-routes');
+const PORT = process.env.PORT || 3001
 const app = express();
 
-//need to add middleware
+//middleware
+app.use(express.json()); //only need for post and put
+app.use(express.urlencoded({ extended: true })); //for forms, extended: true is for nested objects
+app.use(express.static('public'));
+
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`app is listening on http://localhost:${PORT}`);
