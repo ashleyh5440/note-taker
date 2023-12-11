@@ -27,4 +27,4 @@
 
   [Note Taker](https://ashleyh5440.github.io/note-taker/)
 
-![Note Taker](./assets/note-taker.png)
+![Note Taker](./note-taker.png)
